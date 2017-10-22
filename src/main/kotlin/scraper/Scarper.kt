@@ -1,12 +1,8 @@
 package scraper
 
 import com.beust.klaxon.*
-import com.natpryce.konfig.ConfigurationProperties
-import com.natpryce.konfig.PropertyGroup
 import okhttp3.*
 import java.io.IOException
-import okhttp3.FormBody
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 
@@ -14,7 +10,7 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
 
     private val client = OkHttpClient()
     private val parser = Parser()
-    private var lastRun: Set<Highlight> = HashSet()
+    private var lastRun: Map<Int, Highlight> = HashMap()
 
     fun refresh() {
         println("Retrieving JSON")
@@ -47,16 +43,16 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
         }
         println("Time: ${LocalDateTime.now()}, Previous: ${lastRun.size}, Latest: ${highlights.size}, Diff: ${highlights.size - lastRun.size}")
         if (!lastRun.isEmpty()) {
-            highlights.filter { !lastRun.contains(it) }.forEach {
+            highlights.filter { !lastRun.containsKey(it.id) }.forEach {
                 val message = "{\"channel\": \"#${slackChannel}\", \"text\": " +
                         "\"<${it.videoUrl}|${it.title}>\", " +
                         "\"icon_emoji\": \":football:\"" +
                         "}"
-                println("Posting to Slack: ${it.title}")
+                println("Posting to Slack: ${it.id} - ${it.title}")
                 slack(message)
             }
         }
-        lastRun = highlights
+        lastRun = highlights.associate { it.id to it }
     }
 
     private fun slack(message: String) {

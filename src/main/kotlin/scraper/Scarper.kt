@@ -10,7 +10,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 
-class Scraper(private val slackWebhookUrl: String) {
+class Scraper(private val slackWebhookUrl: String, private val slackChannel: String) {
 
     private val client = OkHttpClient()
     private val parser = Parser()
@@ -48,7 +48,7 @@ class Scraper(private val slackWebhookUrl: String) {
         println("Time: ${LocalDateTime.now()}, Previous: ${lastRun.size}, Latest: ${highlights.size}, Diff: ${highlights.size - lastRun.size}")
         if (!lastRun.isEmpty()) {
             highlights.filter { !lastRun.contains(it) }.forEach {
-                val message = "{\"channel\": \"#balls\", \"text\": " +
+                val message = "{\"channel\": \"#${slackChannel}\", \"text\": " +
                         "\"<${it.videoUrl}|${it.title}>\", " +
                         "\"icon_emoji\": \":football:\"" +
                         "}"

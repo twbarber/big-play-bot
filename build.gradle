@@ -2,7 +2,7 @@ group 'com.twbarber'
 version '0.0.1'
 
 buildscript {
-    ext.kotlin_version = '1.1.51'
+    ext.kotlin_version = '1.1.50'
 
     repositories {
         mavenCentral()
@@ -21,11 +21,14 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    compile 'io.github.microutils:kotlin-logging:1.4.6'
+    compile "com.natpryce:konfig:1.6.1.0"
+
     compile "com.beust:klaxon:0.30"
     compile "com.squareup.okhttp3:okhttp:3.8.1"
     compile "me.ramswaroop.jbot:jbot:3.0.2"
-    compile "com.natpryce:konfig:1.6.1.0"
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.1.51'
 }
 
 compileKotlin {

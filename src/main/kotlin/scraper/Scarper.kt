@@ -6,6 +6,7 @@ import com.beust.klaxon.array
 import com.beust.klaxon.int
 import com.beust.klaxon.obj
 import com.beust.klaxon.string
+import mu.KotlinLogging
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -18,12 +19,16 @@ import java.time.LocalDateTime
 
 class Scraper(private val slackWebhookUrl: String, private val slackChannel: String) {
 
+    companion object {
+        val LOG = KotlinLogging.logger {}
+    }
+
     private val client = OkHttpClient()
     private val parser = Parser()
     private var lastRun: Map<Int, Highlight> = HashMap()
 
     fun refresh() {
-        println("Retrieving JSON")
+        LOG.info { "Retrieving JSON" }
         val request = Request.Builder()
                 .url("https://feeds.nfl.com/feeds-rs/bigPlayVideos.json")
                 .build()
@@ -35,7 +40,7 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
                 response.body()?.close()
             }
         })
-        println("Iteration Complete.")
+        LOG.info { "Iteration Complete." }
     }
 
     fun parseJson(response: Response) {
@@ -51,14 +56,14 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
                             it.obj("video")?.array<JsonObject>("videoBitRates")!![4].string("videoPath") ?: ""
                     ))
         }
-        println("Time: ${LocalDateTime.now()}, Previous: ${lastRun.size}, Latest: ${highlights.size}, Diff: ${highlights.size - lastRun.size}")
+        LOG.info { "Previous: ${lastRun.size}, Latest: ${highlights.size}, Diff: ${highlights.size - lastRun.size}" }
         if (!lastRun.isEmpty()) {
             highlights.filter { !lastRun.containsKey(it.id) }.forEach {
                 val message = "{\"channel\": \"#${slackChannel}\", \"text\": " +
                         "\"<${it.videoUrl}|${it.title}>\", " +
                         "\"icon_emoji\": \":football:\"" +
                         "}"
-                println("Posting to Slack: ${it.id} - ${it.title}")
+                LOG.info { "Posting to Slack: ${it.id} - ${it.title}" }
                 slack(message)
             }
         }
@@ -77,7 +82,7 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) = println("NOT ok")
             override fun onResponse(call: Call, response: Response) {
-                println("Slack Post Succeeded.")
+                LOG.info { "Slack Post Succeeded." }
                 response.body()?.close()
             }
         })

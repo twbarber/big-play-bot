@@ -1,7 +1,17 @@
 package scraper
 
-import com.beust.klaxon.*
-import okhttp3.*
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Parser
+import com.beust.klaxon.array
+import com.beust.klaxon.int
+import com.beust.klaxon.obj
+import com.beust.klaxon.string
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.FormBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import java.io.IOException
 import java.time.LocalDateTime
 

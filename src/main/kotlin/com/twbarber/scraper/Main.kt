@@ -1,10 +1,10 @@
-package scraper
+package com.twbarber.scraper
 
 import com.natpryce.konfig.ConfigurationProperties
 import mu.KotlinLogging
-import scraper.settings.refreshInterval
-import scraper.settings.slackChannel
-import scraper.settings.slackWebhookUrl
+import com.twbarber.scraper.settings.refreshInterval
+import com.twbarber.scraper.settings.slackChannel
+import com.twbarber.scraper.settings.slackWebhookUrl
 
 class Main {
 

@@ -1,4 +1,4 @@
-package scraper
+package com.twbarber.scraper
 
 import com.natpryce.konfig.PropertyGroup
 import com.natpryce.konfig.getValue

@@ -1,4 +1,4 @@
-package scraper
+package com.twbarber.scraper
 
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser

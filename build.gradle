@@ -28,7 +28,6 @@ dependencies {
 
     compile "com.beust:klaxon:0.30"
     compile "com.squareup.okhttp3:okhttp:3.8.1"
-    compile "me.ramswaroop.jbot:jbot:3.0.2"
 }
 
 compileKotlin {

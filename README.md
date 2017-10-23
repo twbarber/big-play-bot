@@ -11,7 +11,7 @@ retrieved by this application.
 2. Create your [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/)
 3. Create a [Configuration File](#configuration) at `src/main/resources/application.properties`
 4. Build the project using `./gradlew jar`
-5. Launch your jar file using `java -jar big-play-scraper-0.0.1.jar`
+5. Launch your jar file using `java -jar big-play-bot-0.0.1.jar`
 
 \*Requires Kotlin for [Intellij](https://plugins.jetbrains.com/plugin/6954-kotlin) or [Eclipse](http://marketplace.eclipse.org/content/kotlin-plugin-eclipse).
 
@@ -27,7 +27,7 @@ A [Slack Incoming Webhook URL](https://my.slack.com/services/new/incoming-webhoo
 all required configuration values.
 
 You'll need to specify an `application.properties` file in `src/main/resources` in order
-for this to run correctly. An example can be found [here](https://github.com/twbarber/big-play-scraper/blob/master/src/main/resources/application.properties.example).
+for this to run correctly. An example can be found [here](https://github.com/twbarber/big-play-bot/blob/master/src/main/resources/application.properties.example).
 
 Alternatively, create a new `application.properties` file and paste in the following properties
 with your desired configuration values. 

@@ -9,13 +9,13 @@ retrieved by this application.
 
 1. Clone this repository
 2. Create your [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/)
-3. Create a [Configuration File](#Configuration) at `src/main/resources/application.properties`
+3. Create a [Configuration File](#configuration) at `src/main/resources/application.properties`
 4. Build the project using `./gradlew jar`
 5. Launch your jar file using `java -jar big-play-scraper-0.0.1.jar`
 
 ## How it Works
 
-While the [application is running](#Usage), all future updates to the NFL Big Play Feed will be sent to the specified channel
+While the [application is running](#usage), all future updates to the NFL Big Play Feed will be sent to the specified channel
 via your Incoming Webhook. **Existing entries in the feed are ignored**, in order to prevent message spam when starting
 and restarting the application.
 

@@ -25,6 +25,7 @@ dependencies {
 
     compile 'io.github.microutils:kotlin-logging:1.4.6'
     compile "com.natpryce:konfig:1.6.1.0"
+    compile "ch.qos.logback:logback-classic:1.2.3"
 
     compile "com.beust:klaxon:0.30"
     compile "com.squareup.okhttp3:okhttp:3.8.1"

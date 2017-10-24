@@ -12,13 +12,11 @@ Videos are often added to the [Big Play Feed](https://feeds.nfl.com/feeds-rs/big
 
 ## Usage
 
-1. Clone this repository*
+1. Clone this repository
 2. Create your [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/)
 3. Create a [Configuration File](#configuration) at `src/main/resources/application.properties`
 4. Build the project using `./gradlew jar`
 5. Launch your jar file using `java -jar big-play-bot-0.0.1.jar`
-
-\*Requires Kotlin for [Intellij](https://plugins.jetbrains.com/plugin/6954-kotlin) or [Eclipse](http://marketplace.eclipse.org/content/kotlin-plugin-eclipse).
 
 ## How it Works
 

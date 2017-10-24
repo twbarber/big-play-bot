@@ -45,6 +45,7 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
 
     fun parseJson(response: Response) {
         val jsonString = StringBuilder(response.body()?.string())
+        LOG.info { jsonString.toString() }
         val json: JsonObject = parser.parse(jsonString) as JsonObject
         val bigPlays = json.array<JsonObject>("bigPlays")
         val highlights: MutableSet<Highlight> = HashSet()

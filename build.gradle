@@ -29,6 +29,7 @@ dependencies {
 
     compile "com.beust:klaxon:0.30"
     compile "com.squareup.okhttp3:okhttp:3.8.1"
+    compile 'com.amazonaws:aws-java-sdk-dynamodb:1.11.218'
 }
 
 compileKotlin {

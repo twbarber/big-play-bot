@@ -3,6 +3,7 @@ package com.twbarber.scraper
 import com.amazonaws.regions.Region
 import com.amazonaws.regions.Regions
 import com.twbarber.amazon.SnsService
+import kotlinx.coroutines.experimental.runBlocking
 import mu.KotlinLogging
 
 object BigPlayHandler {
@@ -17,9 +18,11 @@ object BigPlayHandler {
         LOG.info { "Configuration Loaded..." }
         val newHighlights = BigPlayRepository.run()
         newHighlights.forEach {
-            val message = "<${it.videoUrl}|${it.title}>"
-            println(message)
-            // SnsService.send(awsRegion, topicArn, message)
+            runBlocking {
+                val message = "<${it.videoUrl}|${it.title}>"
+                println(message)
+                SnsService.send(awsRegion, topicArn, message)
+            }
         }
     }
 

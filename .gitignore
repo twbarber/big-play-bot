@@ -22,7 +22,7 @@
 hs_err_pid*
 
 # Config
-src/main/resources/application.properties
+src/main/resources/AwsCredentials.properties
 
 # Idea
 .idea

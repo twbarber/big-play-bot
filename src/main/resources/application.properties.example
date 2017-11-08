@@ -1,3 +1,0 @@
-settings.slackWebhookUrl=<your-slack-webhook-url>
-settings.slackChannel=general
-settings.refreshInterval=15000

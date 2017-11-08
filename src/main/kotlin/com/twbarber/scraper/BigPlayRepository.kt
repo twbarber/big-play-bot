@@ -16,7 +16,7 @@ object BigPlayRepository {
     private val LOG = KotlinLogging.logger {}
 
     private val parser = Parser()
-    private var lastRun: Map<Int, Highlight> = HashMap()
+    private var lastRun: Set<Int> = getLastRun()
 
     fun run() : MutableSet<Highlight> {
         LOG.info { "Retrieving JSON" }
@@ -40,7 +40,10 @@ object BigPlayRepository {
         }?.toMutableSet() ?: mutableSetOf()
         LOG.info { "Previous: ${lastRun.size}, Latest: ${highlights.size}, Diff: ${highlights.size - lastRun.size}" }
         return highlights.filter { !lastRun.contains(it.id) }.toMutableSet()
-                .also { lastRun = highlights.associate { it.id to it } }
+    }
+
+    private fun getLastRun() : Set<Int> {
+        return setOf()
     }
 
 }

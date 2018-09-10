@@ -14,7 +14,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
-import java.time.LocalDateTime
 
 
 class Scraper(private val slackWebhookUrl: String, private val slackChannel: String) {
@@ -59,7 +58,7 @@ class Scraper(private val slackWebhookUrl: String, private val slackChannel: Str
         LOG.info { "Previous: ${lastRun.size}, Latest: ${highlights.size}, Diff: ${highlights.size - lastRun.size}" }
         if (!lastRun.isEmpty()) {
             highlights.filter { !lastRun.containsKey(it.id) }.forEach {
-                val message = "{\"channel\": \"#${slackChannel}\", \"text\": " +
+                val message = "{\"channel\": \"#$slackChannel\", \"text\": " +
                         "\"<${it.videoUrl}|${it.title}>\", " +
                         "\"icon_emoji\": \":football:\"" +
                         "}"

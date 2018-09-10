@@ -1,0 +1,19 @@
+{
+  "name": "big-play-bot",
+  "version": "1.0.0",
+  "description": "Slack NFL Big Play Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twbarber/big-play-bot.git"
+  },
+  "author": "Tyler Barber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/twbarber/big-play-bot/issues"
+  },
+  "homepage": "https://github.com/twbarber/big-play-bot#readme"
+}

@@ -22,7 +22,7 @@
 hs_err_pid*
 
 # Config
-src/main/resources/application.properties
+application.properties
 
 # Idea
 .idea

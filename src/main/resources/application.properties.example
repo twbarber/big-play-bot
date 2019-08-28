@@ -1,3 +1,4 @@
-settings.slackWebhookUrl=<your-slack-webhook-url>
-settings.slackChannel=general
-settings.refreshInterval=15000
+app.slackWebhookUrl=https://hooks.slack.com/services/<your-slack-webhook-path>
+app.slackChannel=general
+app.nflUrl=https://feeds.nfl.com/feeds-rs/bigPlayVideos.json
+app.refreshInterval=15000
